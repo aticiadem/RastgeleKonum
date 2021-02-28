@@ -48,4 +48,20 @@ class LocationDao {
         db.close()
     }
 
+    fun searchLocation(dh: DatabaseHelper, search: String): ArrayList<LocationModel>{
+        val db = dh.writableDatabase
+        val resultArrayList = ArrayList<LocationModel>()
+        val c = db.rawQuery("SELECT * FROM records WHERE location_description like '%$search%'",null)
+
+        while (c.moveToNext()){
+            val result = LocationModel(
+                    c.getInt(c.getColumnIndex("location_id")),
+                    c.getString(c.getColumnIndex("location_latitude")),
+                    c.getString(c.getColumnIndex("location_longitude")),
+                    c.getString(c.getColumnIndex("location_description")))
+            resultArrayList.add(result)
+        }
+        return resultArrayList
+    }
+
 }

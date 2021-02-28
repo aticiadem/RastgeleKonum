@@ -13,4 +13,5 @@
     <string name="special_info">Info</string>
     <string name="records_search">Search</string>
     <string name="records_delete_all">Delete All</string>
+    <string name="records_deleted_all">Everything is deleted.</string>
 </resources>

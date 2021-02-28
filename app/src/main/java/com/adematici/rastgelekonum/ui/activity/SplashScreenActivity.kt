@@ -18,13 +18,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val dh = DatabaseHelper(this)
 
-        LocationDao().addLocation(dh,"1","2","ahahahah")
-        LocationDao().addLocation(dh,"112","224","buradan selam")
-        LocationDao().addLocation(dh,"1124","223","konum iyi")
-
         Handler().postDelayed({
             val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
             startActivity(intent)
+            finish()
         },800)
     }
 

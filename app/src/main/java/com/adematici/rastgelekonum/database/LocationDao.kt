@@ -38,7 +38,7 @@ class LocationDao {
 
     fun deleteLocation(dh: DatabaseHelper, locationId: Int){
         val db = dh.writableDatabase
-        db.delete("records","location_id", arrayOf(locationId.toString()))
+        db.delete("records","location_id=?", arrayOf(locationId.toString()))
         db.close()
     }
 

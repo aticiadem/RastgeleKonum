@@ -1,15 +1,20 @@
 package com.adematici.rastgelekonum.ui.fragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.adematici.rastgelekonum.R
 import com.adematici.rastgelekonum.databinding.FragmentSpecialBinding
+import com.adematici.rastgelekonum.ui.activity.MapsActivity
 
 class SpecialFragment : Fragment() {
 
     private lateinit var binding: FragmentSpecialBinding
+    private var latitude: Double? = null
+    private var longitude: Double? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +27,26 @@ class SpecialFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+
+        binding.buttonGoLocation.setOnClickListener {
+            try {
+                if((binding.editTextLatitude.text.toString().toDouble() <= 85.0 && binding.editTextLatitude.text.toString().toDouble() >= -85.0)
+                        && (binding.editTextLongitude.text.toString().toDouble() <= 180.0 && binding.editTextLongitude.text.toString().toDouble() >= -180.0)){
+                    latitude = binding.editTextLatitude.text.toString().toDouble()
+                    longitude = binding.editTextLongitude.text.toString().toDouble()
+                    val intent = Intent(requireActivity(), MapsActivity::class.java)
+                    intent.putExtra("info","manual")
+                    intent.putExtra("notrandomlatitude",latitude)
+                    intent.putExtra("notrandomlongitude",longitude)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(requireActivity(),"Latitude Range: -85/+85, Longitude Range: -180/+180",Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception){
+                e.printStackTrace()
+                Toast.makeText(requireActivity(),"Related fields cannot be left blank!",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -1,20 +1,40 @@
 package com.adematici.rastgelekonum.ui.fragment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.adematici.rastgelekonum.R
+import com.adematici.rastgelekonum.databinding.FragmentSpecialBinding
 
 class SpecialFragment : Fragment() {
+
+    private lateinit var binding: FragmentSpecialBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_special, container, false)
+    ): View {
+        binding = FragmentSpecialBinding.inflate(layoutInflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.special_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_info -> {
+                return true
+            }
+        }
+        return true
     }
 
 }

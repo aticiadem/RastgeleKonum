@@ -10,4 +10,5 @@
     <color name="pdark">#000a12</color>
     <color name="primary">#263238</color>
     <color name="plight">#4f5b62</color>
+    <color name="phighlight">#949595</color>
 </resources>

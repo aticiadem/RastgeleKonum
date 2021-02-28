@@ -1,10 +1,10 @@
-package com.adematici.rastgelekonum
+package com.adematici.rastgelekonum.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
+import com.adematici.rastgelekonum.R
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class SplashScreenActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            val intent = Intent(this@SplashScreenActivity,MainActivity::class.java)
+            val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
             startActivity(intent)
         },800)
     }

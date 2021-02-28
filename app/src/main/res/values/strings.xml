@@ -9,7 +9,7 @@
     <string name="random_settings">Settings</string>
     <string name="special_latitude">Latitude</string>
     <string name="special_longitude">Longitude</string>
-    <string name="special_go_location">Go Location</string>
+    <string name="special_go_location">Go To Location</string>
     <string name="special_info">Info</string>
     <string name="records_search">Search</string>
     <string name="records_delete_all">Delete All</string>

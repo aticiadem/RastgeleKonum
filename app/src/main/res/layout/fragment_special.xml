@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:ems="10"
+        android:maxLength="10"
         android:singleLine="true"
         android:textColor="@color/black"
         android:paddingBottom="10dp"
@@ -23,7 +24,7 @@
         android:paddingEnd="15dp"
         android:textSize="22sp"
         android:hint="@string/special_latitude"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         />
 
     <EditText
@@ -33,6 +34,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
+        android:maxLength="11"
         android:singleLine="true"
         android:textColor="@color/black"
         android:paddingBottom="10dp"

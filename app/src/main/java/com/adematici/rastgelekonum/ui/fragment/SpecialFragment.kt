@@ -40,7 +40,7 @@ class SpecialFragment : Fragment() {
                     intent.putExtra("notrandomlongitude",longitude)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(requireActivity(),"Latitude Range: -85/+85, Longitude Range: -180/+180",Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireActivity(),"Latitude Range: -85/+85 \nLongitude Range: -180/+180",Toast.LENGTH_LONG).show()
                 }
             } catch (e: Exception){
                 e.printStackTrace()

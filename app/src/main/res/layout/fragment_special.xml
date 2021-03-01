@@ -43,7 +43,7 @@
         android:paddingEnd="15dp"
         android:textSize="22sp"
         android:hint="@string/special_longitude"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
          />
 
     <Button

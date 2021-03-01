@@ -11,4 +11,5 @@
     <color name="primary">#263238</color>
     <color name="plight">#4f5b62</color>
     <color name="phighlight">#949595</color>
+    <color name="splashcolor">#E4E4E4</color>
 </resources>

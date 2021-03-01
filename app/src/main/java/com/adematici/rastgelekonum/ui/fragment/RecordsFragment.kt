@@ -1,5 +1,6 @@
 package com.adematici.rastgelekonum.ui.fragment
 
+import android.location.Location
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -62,11 +63,17 @@ class RecordsFragment : Fragment(), SearchView.OnQueryTextListener {
                 return true
             }
             R.id.action_delete -> {
-                LocationDao().deleteAllLocation(dh)
-                locationList = LocationDao().allLocationRecords(dh)
-                adapter = RecordsAdapter(requireActivity(),locationList)
-                binding.recyclerView.adapter = adapter
-                Toast.makeText(activity,R.string.records_deleted_all,Toast.LENGTH_SHORT).show()
+                val liste = LocationDao().allLocationRecords(dh)
+                if(liste.isNotEmpty()){
+                    LocationDao().deleteAllLocation(dh)
+                    locationList = LocationDao().allLocationRecords(dh)
+                    adapter = RecordsAdapter(requireActivity(),locationList)
+                    binding.recyclerView.adapter = adapter
+                    Toast.makeText(activity,R.string.records_deleted_all,Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity,R.string.records_not_deleted,Toast.LENGTH_SHORT).show()
+                }
+
                 return true
             }
         }

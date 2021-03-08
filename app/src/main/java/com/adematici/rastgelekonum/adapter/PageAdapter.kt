@@ -22,5 +22,4 @@ class PageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): Fragm
             else -> RandomFragment()
         }
     }
-
 }

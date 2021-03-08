@@ -1,6 +1,5 @@
 package com.adematici.rastgelekonum.ui.fragment
 
-import android.location.Location
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -73,7 +72,6 @@ class RecordsFragment : Fragment(), SearchView.OnQueryTextListener {
                 } else {
                     Toast.makeText(activity,R.string.records_not_deleted,Toast.LENGTH_SHORT).show()
                 }
-
                 return true
             }
         }

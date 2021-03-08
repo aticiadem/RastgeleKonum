@@ -1,7 +1,10 @@
 package com.adematici.rastgelekonum.ui.activity
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.PreferenceManager
 import com.adematici.rastgelekonum.R
 import com.adematici.rastgelekonum.adapter.PageAdapter
 import com.adematici.rastgelekonum.databinding.ActivityMainBinding
@@ -26,4 +29,5 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
     }
+
 }

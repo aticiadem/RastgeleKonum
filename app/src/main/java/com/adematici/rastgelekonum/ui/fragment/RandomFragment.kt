@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.adematici.rastgelekonum.R
 import com.adematici.rastgelekonum.databinding.FragmentRandomBinding
 import com.adematici.rastgelekonum.ui.activity.MapsActivity
+import com.adematici.rastgelekonum.ui.activity.SettingsActivity
 import kotlin.random.Random
 
 class RandomFragment : Fragment() {
@@ -43,6 +44,10 @@ class RandomFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_settings ->{
+                activity?.let{
+                    val intent = Intent (it, SettingsActivity::class.java)
+                    it.startActivity(intent)
+                }
                 return true
             }
         }

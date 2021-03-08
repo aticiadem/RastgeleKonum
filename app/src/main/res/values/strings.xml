@@ -15,4 +15,13 @@
     <string name="records_delete_all">Delete All</string>
     <string name="records_deleted_all">Everything is deleted.</string>
     <string name="records_not_deleted">You dont have any records.</string>
+    <string name="settings">Settings</string>
+    <string name="settingsdarkmode">Dark Mode Setting</string>
+    <string name="darkmode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="nightmodeactivated">Night Mode Activated</string>
+    <string name="nightmodedeactivated">Night Mode Deactivated</string>
+    <string name="languageenglish">English</string>
+    <string name="languageturkish">Turkish</string>
 </resources>

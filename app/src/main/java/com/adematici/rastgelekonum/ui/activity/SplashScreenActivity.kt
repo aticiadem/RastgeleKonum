@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.adematici.rastgelekonum.R
@@ -18,21 +19,12 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         },800)
 
-        val currentNightMode = Configuration.UI_MODE_NIGHT_MASK
-        when (currentNightMode) {
-            Configuration.UI_MODE_NIGHT_NO -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            } // Night mode is not active, we're using the light theme
-            Configuration.UI_MODE_NIGHT_YES -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } // Night mode is active, we're using dark theme
-        }
         loadSetting()
     }
 
@@ -41,11 +33,9 @@ class SplashScreenActivity : AppCompatActivity() {
         val checkNight: Boolean = sp.getBoolean("DARKMODE",false)
         if(checkNight){
             // Dark Mode open
-            //Toast.makeText(this,"loadsettingtrue",Toast.LENGTH_SHORT).show()
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {
             // Dark Mode closed
-            //Toast.makeText(this,"loadsettingfalse",Toast.LENGTH_SHORT).show()
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }

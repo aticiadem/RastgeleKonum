@@ -1,6 +1,5 @@
 <PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory>
 
@@ -10,14 +9,6 @@
             app:defaultValue="false"
             app:summaryOn="@string/nightmodeactivated"
             app:summaryOff="@string/nightmodedeactivated"/>
-
-        <ListPreference
-            app:defaultValue="@string/languageenglish"
-            app:key="LANGUAGE"
-            app:title="@string/language"
-            app:useSimpleSummaryProvider="true"
-            app:entries="@array/items_language"
-            app:entryValues="@array/items_language"/>
 
     </PreferenceCategory>
 

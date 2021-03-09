@@ -27,7 +27,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
             val darkMode: CheckBoxPreference? = findPreference("DARKMODE")
-            darkMode?.setOnPreferenceChangeListener { preference, value ->
+            darkMode?.setOnPreferenceChangeListener { _, value ->
                 if(value as Boolean){
                     // Dark Mode open
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

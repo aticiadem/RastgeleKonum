@@ -3,13 +3,11 @@ package com.adematici.rastgelekonum.ui.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.adematici.rastgelekonum.MapsActivity
 import com.adematici.rastgelekonum.R
 import com.adematici.rastgelekonum.databinding.FragmentRandomBinding
-import com.adematici.rastgelekonum.ui.activity.MapsActivity
 import com.adematici.rastgelekonum.ui.activity.SettingsActivity
-import kotlin.random.Random
 
 class RandomFragment : Fragment() {
 
@@ -26,13 +24,17 @@ class RandomFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.buttonRandomLocation.setOnClickListener {
-            val latitude: Double = Random.nextDouble(-85.0000000,85.0000000)
-            val longitude: Double = Random.nextDouble(-180.0000000,180.0000000)
-            val intent = Intent(requireActivity(), MapsActivity::class.java)
-            intent.putExtra("info","random")
-            intent.putExtra("randomlatitude",latitude)
-            intent.putExtra("randomlongitude",longitude)
-            startActivity(intent)
+            //val latitude: Double = Random.nextDouble(-85.0000000,85.0000000)
+            //val longitude: Double = Random.nextDouble(-180.0000000,180.0000000)
+            //val intent = Intent(requireActivity(), MapsActivity::class.java)
+            //intent.putExtra("info","random")
+            //intent.putExtra("randomlatitude",latitude)
+            //intent.putExtra("randomlongitude",longitude)
+            //startActivity(intent)
+            activity?.let {
+                val intent = Intent(it, MapsActivity::class.java)
+                it.startActivity(intent)
+            }
         }
     }
 

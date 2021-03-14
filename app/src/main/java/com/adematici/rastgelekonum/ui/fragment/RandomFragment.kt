@@ -1,14 +1,19 @@
 package com.adematici.rastgelekonum.ui.fragment
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.adematici.rastgelekonum.MapsActivity
 import com.adematici.rastgelekonum.R
 import com.adematici.rastgelekonum.databinding.FragmentRandomBinding
+import com.adematici.rastgelekonum.databinding.ZoomCustomDialogBinding
 import com.adematici.rastgelekonum.ui.activity.SettingsActivity
 import kotlin.random.Random
 
@@ -27,13 +32,6 @@ class RandomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-
-        zoomValue = 1f // DEFAULT
-
-        sp = activity?.getSharedPreferences("ZoomInfo", Context.MODE_PRIVATE)!!
-        val editor = sp.edit()
-        editor.putFloat("zoomFloat",zoomValue!!)
-        editor.apply()
 
         binding.buttonRandomLocation.setOnClickListener {
             val latitude: Double = Random.nextDouble(-85.0,85.0)
@@ -64,7 +62,28 @@ class RandomFragment : Fragment() {
                 return true
             }
             R.id.action_zoom_value -> {
-                // zoom setting
+                // Alert Dialog
+                val builder = AlertDialog.Builder(requireActivity())
+                val dialogBinding: ZoomCustomDialogBinding = ZoomCustomDialogBinding.inflate(layoutInflater)
+                builder.setView(dialogBinding.root)
+                val mAlertDialog = builder.show()
+
+                val list = arrayOf("1","2","3","4","5","6","7","8","9"
+                        ,"10","11","12","13","14","15","16","17","18","19","20")
+                val spinnerAdapter = ArrayAdapter(requireActivity(),android.R.layout.simple_spinner_item,list)
+                dialogBinding.spinner.adapter = spinnerAdapter
+
+                dialogBinding.buttonAlertConfirm.setOnClickListener {
+                    val newZoomValue = dialogBinding.spinner.selectedItem
+                    sp = activity?.getSharedPreferences("ZoomInfo", Context.MODE_PRIVATE)!!
+                    val editor = sp.edit()
+                    editor.putFloat("zoomFloat",newZoomValue.toString().toFloat())
+                    editor.apply()
+                    mAlertDialog.dismiss()
+                }
+                dialogBinding.buttonAlertCancel.setOnClickListener {
+                    mAlertDialog.dismiss()
+                }
             }
         }
         return true

@@ -38,7 +38,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         sp = getSharedPreferences("ZoomInfo", Context.MODE_PRIVATE)!!
-        zoomValue = sp.getFloat("zoomFloat",15f)
+        zoomValue = sp.getFloat("zoomFloat",1f)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
@@ -7,5 +8,10 @@
         android:title="@string/random_settings"
         app:showAsAction="always"
         android:icon="@drawable/random_settings"/>
+
+    <item
+        android:id="@+id/action_zoom_value"
+        android:title="@string/zoom_value"
+        app:showAsAction="never"/>
 
 </menu>

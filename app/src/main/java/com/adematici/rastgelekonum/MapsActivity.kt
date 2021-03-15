@@ -10,9 +10,18 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.adematici.rastgelekonum.database.DatabaseHelper
+import com.adematici.rastgelekonum.database.LocationDao
+import com.adematici.rastgelekonum.databinding.MapSaveCustomDialogBinding
+import com.adematici.rastgelekonum.databinding.ZoomCustomDialogBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -28,6 +37,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationManager: LocationManager
     private lateinit var sp: SharedPreferences
     private var zoomValue: Float? = null
+    private lateinit var dh: DatabaseHelper
+    private lateinit var latitudeDB: String
+    private lateinit var longitudeDB: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +49,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        latitudeDB = ""
+        longitudeDB = ""
+        dh = DatabaseHelper(this)
         sp = getSharedPreferences("ZoomInfo", Context.MODE_PRIVATE)!!
         zoomValue = sp.getFloat("zoomFloat",1f)
     }
@@ -77,6 +92,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val latitude = intent.getDoubleExtra("notrandomlatitude",0.0)
             val longitude = intent.getDoubleExtra("notrandomlongitude",0.0)
             val location = LatLng(latitude,longitude)
+            latitudeDB = latitude.toString()
+            longitudeDB = longitude.toString()
             mMap.clear()
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,zoomValue))
             val geocoder = Geocoder(this, Locale.getDefault())
@@ -106,6 +123,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val latitude = intent.getDoubleExtra("randomlatitude",0.0)
             val longitude = intent.getDoubleExtra("randomlongitude",0.0)
             val location = LatLng(latitude,longitude)
+            latitudeDB = latitude.toString()
+            longitudeDB = longitude.toString()
             mMap.clear()
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,zoomValue))
             val geocoder = Geocoder(this, Locale.getDefault())
@@ -131,6 +150,42 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 e.printStackTrace()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.map_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_save_menu -> {
+                val builder = AlertDialog.Builder(this)
+                val dialogBinding: MapSaveCustomDialogBinding = MapSaveCustomDialogBinding.inflate(layoutInflater)
+                builder.setView(dialogBinding.root)
+                val mAlertDialog = builder.show()
+
+                dialogBinding.buttonAlertConfirm.setOnClickListener {
+                    if(dialogBinding.editTextLocationName.text.isNotEmpty()){
+                        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                            val description = dialogBinding.editTextLocationName.text.toString()
+                            LocationDao().addLocation(dh,latitudeDB,longitudeDB,description)
+                            Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this,"Please Confirm Location Permission",Toast.LENGTH_LONG).show()
+                        }
+                    } else {
+                        Toast.makeText(this,"Please Enter Location Name",Toast.LENGTH_SHORT).show()
+                    }
+                    mAlertDialog.dismiss()
+                }
+                dialogBinding.buttonAlertCancel.setOnClickListener {
+                    mAlertDialog.dismiss()
+                }
+            }
+        }
+        return true
     }
 
 }

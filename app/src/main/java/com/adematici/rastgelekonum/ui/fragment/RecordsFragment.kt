@@ -44,6 +44,7 @@ class RecordsFragment : Fragment(), SearchView.OnQueryTextListener {
         layoutManager.stackFromEnd = true
 
         binding.recyclerView.layoutManager = layoutManager
+        adapter.notifyDataSetChanged()
         binding.recyclerView.adapter = adapter
     }
 

@@ -29,4 +29,7 @@
     <string name="cancel_alert_dialog">Cancel</string>
     <string name="confirm_alert_dialog">Confirm</string>
     <string name="select_zoom_value_alert_text">Select Zoom Value</string>
+    <string name="map_save">save</string>
+    <string name="location_name_map">Location Name</string>
+    <string name="location_name_map_hint">Location Name</string>
 </resources>

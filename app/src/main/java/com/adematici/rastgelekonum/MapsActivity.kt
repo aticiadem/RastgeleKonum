@@ -65,6 +65,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
         } else {
+            val intent = intent
+            val info = intent.getStringExtra("info")
+            if(info.equals("adapter")){
+
+            }
             searchLocation(zoomValue!!)
         }
     }
@@ -149,6 +154,36 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     mMap.addMarker(MarkerOptions().position(location).title("Location"))
                 }
             } catch (e: Exception){
+                e.printStackTrace()
+            }
+        } else if(info.equals("adapter")) {
+            val latitude = intent.getDoubleExtra("adapterlatitude", 0.0)
+            val longitude = intent.getDoubleExtra("adapterlongitude", 0.0)
+            val location = LatLng(latitude, longitude)
+            latitudeDB = latitude.toString()
+            longitudeDB = longitude.toString()
+            mMap.clear()
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoomValue))
+            val geocoder = Geocoder(this, Locale.getDefault())
+            try {
+                var address: String? = ""
+                val addressList = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                if (addressList != null && addressList.size > 0) {
+                    if (addressList[0].countryName != null) {
+                        address += addressList[0].countryName
+                        if (addressList[0].thoroughfare != null) {
+                            address += " " + addressList[0].thoroughfare
+                        }
+                    }
+                } else {
+                    address = null
+                }
+                if (address != null) {
+                    mMap.addMarker(MarkerOptions().position(location).title(address))
+                } else {
+                    mMap.addMarker(MarkerOptions().position(location).title("Location"))
+                }
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }

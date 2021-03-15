@@ -1,9 +1,11 @@
 package com.adematici.rastgelekonum.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.adematici.rastgelekonum.MapsActivity
 import com.adematici.rastgelekonum.database.DatabaseHelper
 import com.adematici.rastgelekonum.database.LocationDao
 import com.adematici.rastgelekonum.databinding.RecyclerRowRecordsBinding
@@ -29,6 +31,20 @@ class RecordsAdapter(private val mContext:Context,
             LocationDao().deleteLocation(dh,locationArrayList[position].locationId)
             locationArrayList = LocationDao().allLocationRecords(dh)
             notifyDataSetChanged()
+        }
+        holder.itemBinding.imageView.setOnClickListener {
+            val intent = Intent(mContext,MapsActivity::class.java)
+            intent.putExtra("info","adapter")
+            intent.putExtra("adapterlatitude",locationArrayList[position].locationLatitude.toDouble())
+            intent.putExtra("adapterlongitude",locationArrayList[position].locationLongitude.toDouble())
+            mContext.startActivity(intent)
+        }
+        holder.itemBinding.textViewDescription.setOnClickListener {
+            val intent = Intent(mContext,MapsActivity::class.java)
+            intent.putExtra("info","adapter")
+            intent.putExtra("adapterlatitude",locationArrayList[position].locationLatitude.toDouble())
+            intent.putExtra("adapterlongitude",locationArrayList[position].locationLongitude.toDouble())
+            mContext.startActivity(intent)
         }
     }
 

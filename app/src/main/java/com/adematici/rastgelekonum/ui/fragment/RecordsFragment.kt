@@ -36,15 +36,14 @@ class RecordsFragment : Fragment(), SearchView.OnQueryTextListener {
 
         dh = DatabaseHelper(requireActivity())
 
-        locationList = LocationDao().allLocationRecords(dh)
-        adapter = RecordsAdapter(requireActivity(),locationList)
-
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.reverseLayout = true
         layoutManager.stackFromEnd = true
 
         binding.recyclerView.layoutManager = layoutManager
-        adapter.notifyDataSetChanged()
+
+        locationList = LocationDao().allLocationRecords(dh)
+        adapter = RecordsAdapter(requireActivity(),locationList)
         binding.recyclerView.adapter = adapter
     }
 
@@ -73,6 +72,12 @@ class RecordsFragment : Fragment(), SearchView.OnQueryTextListener {
                 } else {
                     Toast.makeText(activity,R.string.records_not_deleted,Toast.LENGTH_SHORT).show()
                 }
+                return true
+            }
+            R.id.action_refresh -> {
+                locationList = LocationDao().allLocationRecords(dh)
+                adapter = RecordsAdapter(requireActivity(),locationList)
+                binding.recyclerView.adapter = adapter
                 return true
             }
         }

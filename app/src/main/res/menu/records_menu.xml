@@ -10,6 +10,12 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <item
+        android:id="@+id/action_refresh"
+        android:title="@string/refresh"
+        android:icon="@drawable/ic_refresh"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/action_delete"
         android:title="@string/records_delete_all"
         app:showAsAction="never"/>

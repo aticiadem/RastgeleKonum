@@ -2,6 +2,7 @@ package com.adematici.rastgelekonum
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
@@ -22,6 +23,7 @@ import com.adematici.rastgelekonum.database.DatabaseHelper
 import com.adematici.rastgelekonum.database.LocationDao
 import com.adematici.rastgelekonum.databinding.MapSaveCustomDialogBinding
 import com.adematici.rastgelekonum.databinding.ZoomCustomDialogBinding
+import com.adematici.rastgelekonum.ui.activity.MainActivity
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

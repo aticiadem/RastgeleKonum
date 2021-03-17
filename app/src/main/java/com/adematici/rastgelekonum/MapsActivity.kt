@@ -2,19 +2,15 @@ package com.adematici.rastgelekonum
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -22,8 +18,6 @@ import androidx.core.content.ContextCompat
 import com.adematici.rastgelekonum.database.DatabaseHelper
 import com.adematici.rastgelekonum.database.LocationDao
 import com.adematici.rastgelekonum.databinding.MapSaveCustomDialogBinding
-import com.adematici.rastgelekonum.databinding.ZoomCustomDialogBinding
-import com.adematici.rastgelekonum.ui.activity.MainActivity
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -65,11 +59,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
         } else {
-            val intent = intent
-            val info = intent.getStringExtra("info")
-            if(info.equals("adapter")){
-
-            }
             searchLocation(zoomValue!!)
         }
     }

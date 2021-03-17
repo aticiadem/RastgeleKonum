@@ -33,18 +33,10 @@ class RecordsAdapter(private val mContext:Context,
             notifyDataSetChanged()
         }
         holder.itemBinding.imageView.setOnClickListener {
-            val intent = Intent(mContext,MapsActivity::class.java)
-            intent.putExtra("info","adapter")
-            intent.putExtra("adapterlatitude",locationArrayList[position].locationLatitude.toDouble())
-            intent.putExtra("adapterlongitude",locationArrayList[position].locationLongitude.toDouble())
-            mContext.startActivity(intent)
+            goMap(position)
         }
         holder.itemBinding.textViewDescription.setOnClickListener {
-            val intent = Intent(mContext,MapsActivity::class.java)
-            intent.putExtra("info","adapter")
-            intent.putExtra("adapterlatitude",locationArrayList[position].locationLatitude.toDouble())
-            intent.putExtra("adapterlongitude",locationArrayList[position].locationLongitude.toDouble())
-            mContext.startActivity(intent)
+            goMap(position)
         }
     }
 
@@ -52,5 +44,12 @@ class RecordsAdapter(private val mContext:Context,
         return locationArrayList.size
     }
 
+    private fun goMap(position: Int){
+        val intent = Intent(mContext,MapsActivity::class.java)
+        intent.putExtra("info","adapter")
+        intent.putExtra("adapterlatitude",locationArrayList[position].locationLatitude.toDouble())
+        intent.putExtra("adapterlongitude",locationArrayList[position].locationLongitude.toDouble())
+        mContext.startActivity(intent)
+    }
 
 }

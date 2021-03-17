@@ -13,22 +13,22 @@
     <color name="p_high_light">#949595</color>
     <color name="splash_color">#E4E4E4</color>
     <color name="white_high">#ACACAC</color>
-    <color name="button_white">#FFFFFF</color>
+    <color name="button_white">#C1C1C1</color>
 
 
     <color name="button_text_color">@color/button_white</color>
     <color name="edit_text_text_color">@color/black</color>
-    <color name="hint_text_text_color">@color/white_high</color>
+    <color name="hint_text_text_color">@color/white</color>
     <color name="text_view_text_color">@color/white</color>
     <color name="save_hint_text_color">@color/white_high</color>
-    <color name="save_text_text_color">@color/black</color>
+    <color name="save_text_text_color">@color/white</color>
 
     <color name="button_background">@color/white</color>
-    <color name="edit_text_background">@color/white</color>
+    <color name="edit_text_background">@color/button_white</color>
     <color name="splashscreen_background_color">@color/splash_color</color>
     <color name="tab_layout_background_color">@color/primary</color>
     <color name="view_pager_background">@color/plight</color>
-    <color name="custom_dialog_background">@color/white</color>
+    <color name="custom_dialog_background">@color/plight</color>
     <color name="recycler_row_records_background">@color/plight</color>
-    <color name="zoom_custom_dialog_background">@color/white</color>
+    <color name="zoom_custom_dialog_background">@color/plight</color>
 </resources>

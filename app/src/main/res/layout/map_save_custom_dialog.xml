@@ -17,7 +17,8 @@
         android:gravity="center"
         android:maxLength="25"
         android:inputType="text"
-        android:textColor="@color/edit_text_text_color"
+        android:textColorHint="@color/save_hint_text_color"
+        android:textColor="@color/save_text_text_color"
         android:textSize="18sp"
         android:hint="@string/location_name_map_hint" />
 

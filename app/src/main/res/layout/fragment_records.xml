@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/plight"
+    android:background="@color/view_pager_background"
     tools:context=".ui.fragment.RecordsFragment">
 
     <androidx.recyclerview.widget.RecyclerView

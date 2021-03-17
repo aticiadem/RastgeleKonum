@@ -11,12 +11,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
+        android:background="@color/tab_layout_background_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/phighlight">
+        app:tabTextColor="@color/p_high_light">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

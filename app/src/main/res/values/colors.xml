@@ -7,9 +7,25 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="pdark">#000a12</color>
+    <color name="p_dark">#000a12</color>
     <color name="primary">#263238</color>
     <color name="plight">#4f5b62</color>
-    <color name="phighlight">#949595</color>
-    <color name="splashcolor">#E4E4E4</color>
+    <color name="p_high_light">#949595</color>
+    <color name="splash_color">#E4E4E4</color>
+    <color name="white_high">#ACACAC</color>
+
+
+    <color name="button_text_color">@color/white</color>
+    <color name="edit_text_text_color">@color/black</color>
+    <color name="hint_text_text_color">@color/white_high</color>
+    <color name="text_view_text_color">@color/white</color>
+
+    <color name="button_background">@color/white</color>
+    <color name="edit_text_background">@color/white</color>
+    <color name="splashscreen_background_color">@color/splash_color</color>
+    <color name="tab_layout_background_color">@color/primary</color>
+    <color name="view_pager_background">@color/plight</color>
+    <color name="custom_dialog_background">@color/white</color>
+    <color name="recycler_row_records_background">@color/plight</color>
+    <color name="zoom_custom_dialog_background">@color/white</color>
 </resources>

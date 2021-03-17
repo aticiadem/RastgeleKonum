@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/plight"
+    android:background="@color/view_pager_background"
     tools:context=".ui.fragment.SpecialFragment">
 
     <EditText
@@ -17,7 +17,8 @@
         android:ems="10"
         android:maxLength="10"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/edit_text_text_color"
+        android:textColorHint="@color/hint_text_text_color"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:paddingStart="15dp"
@@ -36,7 +37,8 @@
         android:ems="10"
         android:maxLength="11"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/edit_text_text_color"
+        android:textColorHint="@color/hint_text_text_color"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:paddingStart="15dp"
@@ -55,6 +57,7 @@
         android:paddingTop="10dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
+        android:textColor="@color/button_text_color"
         android:background="@drawable/button_background"
         android:text="@string/special_go_location"
         android:textAllCaps="false"

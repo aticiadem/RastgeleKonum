@@ -55,7 +55,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         longitudeDB = ""
         dh = DatabaseHelper(this)
         sp = getSharedPreferences("ZoomInfo", Context.MODE_PRIVATE)!!
-        zoomValue = sp.getFloat("zoomFloat",1f)
+        zoomValue = sp.getFloat("zoomFloat",5f)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

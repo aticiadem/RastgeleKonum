@@ -45,7 +45,7 @@ class RecordsAdapter(private val mContext:Context,
     }
 
     private fun goMap(position: Int){
-        val intent = Intent(mContext,MapsActivity::class.java)
+        val intent = Intent(mContext, MapsActivity::class.java)
         intent.putExtra("info","adapter")
         intent.putExtra("adapterlatitude",locationArrayList[position].locationLatitude.toDouble())
         intent.putExtra("adapterlongitude",locationArrayList[position].locationLongitude.toDouble())

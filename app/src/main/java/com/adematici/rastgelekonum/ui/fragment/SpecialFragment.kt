@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.adematici.rastgelekonum.MapsActivity
 import com.adematici.rastgelekonum.R
+import com.adematici.rastgelekonum.MapsActivity
 import com.adematici.rastgelekonum.databinding.FragmentSpecialBinding
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
@@ -114,7 +114,7 @@ class SpecialFragment : Fragment() {
     }
 
     private fun loadAds(adRequest: AdRequest){
-        InterstitialAd.load(requireActivity(),"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(requireActivity(),"ADS KEY", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
             }

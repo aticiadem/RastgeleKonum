@@ -8,17 +8,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.adematici.rastgelekonum.R
 import com.adematici.rastgelekonum.MapsActivity
-import com.adematici.rastgelekonum.databinding.FragmentSpecialBinding
+import com.adematici.rastgelekonum.databinding.FragmentCustomBinding
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import java.lang.NumberFormatException
 
-class SpecialFragment : Fragment() {
+class CustomFragment : Fragment() {
 
-    private lateinit var binding: FragmentSpecialBinding
+    private lateinit var binding: FragmentCustomBinding
     private var latitude: Double? = null
     private var longitude: Double? = null
 
@@ -28,7 +29,7 @@ class SpecialFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSpecialBinding.inflate(layoutInflater,container,false)
+        binding = FragmentCustomBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
 
@@ -81,6 +82,8 @@ class SpecialFragment : Fragment() {
             } catch (e: Exception){
                 e.printStackTrace()
                 Toast.makeText(requireActivity(),"Related fields cannot be left blank!",Toast.LENGTH_SHORT).show()
+            } catch (e: NumberFormatException){
+                Toast.makeText(requireActivity(),"Please enter only number.",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -107,14 +110,14 @@ class SpecialFragment : Fragment() {
                 "  Latitude:  (-85)  ~ (+85)\n" +
                 "  Longitude: (-180) ~ (+180)\n" +
                 "\n" + " Example: 39.925054 / 32.8347552\n\n"+
-                "- If you type the coordinates correctly and press the (Go To Location ) button, you will go to the coordinates you entered.\n" +
-                "\n- If you are press to (Go To A Random coordinate) button, you will go to random coordinate in the world." +
+                "- If you type the location correctly and press the (Go To Location) button, you will go to the location you entered.\n" +
+                "\n- If you are press to (Go To A Random Location) button, you will go to random location in the world." +
                 "\n\n- If you press the pointer and then the map icon below, you can connect to Google Maps and get better views.")
         alertDialog.show()
     }
 
     private fun loadAds(adRequest: AdRequest){
-        InterstitialAd.load(requireActivity(),"ADS KEY", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(requireActivity(),"ADS ID", adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mInterstitialAd = null
             }

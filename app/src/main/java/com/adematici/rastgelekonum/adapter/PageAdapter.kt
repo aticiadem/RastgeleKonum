@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.adematici.rastgelekonum.ui.fragment.RandomFragment
 import com.adematici.rastgelekonum.ui.fragment.RecordsFragment
-import com.adematici.rastgelekonum.ui.fragment.SpecialFragment
+import com.adematici.rastgelekonum.ui.fragment.CustomFragment
 
 
 class PageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager,lifecycle) {
@@ -17,7 +17,7 @@ class PageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): Fragm
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> RandomFragment()
-            1 -> SpecialFragment()
+            1 -> CustomFragment()
             2 -> RecordsFragment()
             else -> RandomFragment()
         }

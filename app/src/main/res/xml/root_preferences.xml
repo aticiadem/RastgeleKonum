@@ -5,10 +5,10 @@
 
         <CheckBoxPreference
             app:key="DARKMODE"
-            app:title="@string/darkmode"
+            app:title="@string/dark_mode"
             app:defaultValue="false"
-            app:summaryOn="@string/nightmodeactivated"
-            app:summaryOff="@string/nightmodedeactivated"/>
+            app:summaryOn="@string/night_mode_activated"
+            app:summaryOff="@string/night_mode_deactivated"/>
 
     </PreferenceCategory>
 

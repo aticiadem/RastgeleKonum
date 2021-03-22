@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/view_pager_background"
-    tools:context=".ui.fragment.SpecialFragment">
+    tools:context=".ui.fragment.CustomFragment">
 
     <EditText
         android:id="@+id/editTextLatitude"
@@ -25,7 +25,7 @@
         android:paddingEnd="15dp"
         android:textSize="22sp"
         android:hint="@string/special_latitude"
-        android:inputType="numberDecimal"
+        android:inputType="numberSigned|numberDecimal"
         />
 
     <EditText
@@ -45,8 +45,8 @@
         android:paddingEnd="15dp"
         android:textSize="22sp"
         android:hint="@string/special_longitude"
-        android:inputType="numberDecimal"
-         />
+        android:inputType="numberSigned|numberDecimal"
+        />
 
     <Button
         android:id="@+id/buttonGoLocation"
